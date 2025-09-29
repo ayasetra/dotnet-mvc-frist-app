@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - MyAdminLTEApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome & AdminLTE CSS -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css" />
+</head>
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    @await Html.PartialAsync("_Navbar")
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+        <section class="content pt-3">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </section>
+    </div>
+
+
+</div>
+
+<!-- JS -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/dist/js/adminlte.min.js"></script>
+</body>
+</html>
