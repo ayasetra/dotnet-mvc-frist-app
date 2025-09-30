@@ -2,12 +2,197 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">User Profile</h3>
-    </div>
-    <div class="card-body">
-        <p><b>Nama:</b> John Doe</p>
-        <p><b>Email:</b> john@example.com</p>
-    </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Profile</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="~/Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">User Profile</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar kiri -->
+                <div class="col-md-3">
+                    <!-- Profile Image -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile">
+                            <div class="text-center">
+                                <img class="profile-user-img img-fluid img-circle"
+                                     src="~/dist/img/user4-128x128.jpg"
+                                     alt="User profile picture">
+                            </div>
+
+                            <h3 class="profile-username text-center">Nina Bobo</h3>
+                            <p class="text-muted text-center">Software Engineer</p>
+                        </div>
+                    </div>
+
+                    <!-- About Me Box -->
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">About Me</h3>
+                        </div>
+                        <div class="card-body">
+                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                            <p class="text-muted">B.S. in Computer Science, University of Tennessee</p>
+                            <hr>
+
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                            <p class="text-muted">Malibu, California</p>
+                            <hr>
+
+                            <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                            <p class="text-muted">
+                                <span class="badge badge-danger">UI Design</span>
+                                <span class="badge badge-success">Coding</span>
+                                <span class="badge badge-info">JavaScript</span>
+                                <span class="badge badge-warning">PHP</span>
+                                <span class="badge badge-primary">Node.js</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col kiri -->
+                <!-- Konten kanan -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Contact Information</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Email</b> <span class="float-right text-primary">alex.pierce@example.com</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>No. HP</b> <span class="float-right text-primary">+62 812-3456-7890</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Alamat</b> <span class="float-right text-primary">Jl. Inaja No.085, SL3</span>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Instagram</b>
+                                    <a href="https://instagram.com/surya_danda" target="_blank" class="float-right text-pink">
+                                        <i class="fab fa-instagram"></i> @@surya_danda
+                                    </a>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>GitHub</b>
+                                    <a href="https://github.com/ayasetra" target="_blank" class="float-right text-dark">
+                                        <i class="fab fa-github"></i> github.com/ayasetra
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header border-0">
+                            <div class="d-flex justify-content-between">
+                                <h3 class="card-title">Online Store Visitors</h3>
+                                <a href="javascript:void(0);">View Report</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <p class="d-flex flex-column">
+                                    <span class="text-bold text-lg">820</span>
+                                    <span>Visitors Over Time</span>
+                                </p>
+                                <p class="ml-auto d-flex flex-column text-right">
+                                    <span class="text-success">
+                                        <i class="fas fa-arrow-up"></i> 12.5%
+                                    </span>
+                                    <span class="text-muted">Since last week</span>
+                                </p>
+                            </div>
+                            <!-- /.d-flex -->
+
+                            <div class="position-relative mb-4">
+                                <canvas id="visitors-chart" height="200"></canvas>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-end">
+                                <span class="mr-2">
+                                    <i class="fas fa-square text-primary"></i> This Week
+                                </span>
+
+                                <span>
+                                    <i class="fas fa-square text-gray"></i> Last Week
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                <!-- /.col kanan -->
+            </div>
+        </div>
+    </section>
 </div>
+
+<!-- JS -->
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/dist/js/adminlte.min.js"></script>
+@section Scripts {
+    <script>
+        $(function () {
+            var ctx = document.getElementById('visitors-chart').getContext('2d');
+
+            var visitorsChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'This Week',
+                            data: [120, 170, 140, 210, 180, 250, 220],
+                            borderColor: '#007bff',
+                            backgroundColor: 'rgba(0,123,255,0.1)',
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'Last Week',
+                            data: [100, 140, 120, 180, 160, 200, 190],
+                            borderColor: '#ced4da',
+                            backgroundColor: 'rgba(206,212,218,0.1)',
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false }
+                        },
+                        y: {
+                            grid: { color: '#f4f4f4' },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+}

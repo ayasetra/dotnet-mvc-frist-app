@@ -8,6 +8,7 @@
     <!-- Font Awesome & AdminLTE CSS -->
     <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css" />
     <link rel="stylesheet" href="~/dist/css/adminlte.min.css" />
+
 </head>
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
@@ -27,9 +28,20 @@
 
 </div>
 
-<!-- JS -->
-<script src="~/plugins/jquery/jquery.min.js"></script>
-<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/dist/js/adminlte.min.js"></script>
+    <!-- JS -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/jquery-jvectormap.id.js"></script>
+
+    <!-- AdminLTE -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+
+   
+    @RenderSection("Scripts", required: false)
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+
 </body>
 </html>
